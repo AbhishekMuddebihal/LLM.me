@@ -1,4 +1,3 @@
-
 import { ChatMessage } from "../types";
 
 interface ChatWindowProps {
@@ -7,16 +6,25 @@ interface ChatWindowProps {
 
 const ChatWindow = ({ messages }: ChatWindowProps) => {
     return (
-        <div className="flex flex-col p-4 bg-white rounded-lg shadow-md h-full overflow-y-auto">
+        <div className="d-flex flex-column p-4 bg-white rounded-lg shadow-sm h-100 overflow-auto">
             {messages.map((message, index) => (
                 <div
                     key={index}
-                    className={`flex flex-col p-4 rounded-lg mb-2 ${
-                        message.role === "user" ? "bg-blue-100" : "bg-gray-100"
+                    className={`d-flex mb-2 ${
+                        message.role === "user" ? "justify-content-end" : "justify-content-start"
                     }`}
                 >
-                    <div className="text-sm font-semibold">{message.role}</div>
-                    <div className="text-base">{message.content}</div>
+                    <div
+                        className={`p-3 rounded shadow-sm ${
+                            message.role === "user"
+                                ? "bg-primary text-white text-end"
+                                : "bg-light text-dark text-start"
+                        }`}
+                        style={{ maxWidth: "75%" }}
+                    >
+                        <div className="fw-bold small mb-1">{message.role}</div>
+                        <div>{message.content}</div>
+                    </div>
                 </div>
             ))}
         </div>
