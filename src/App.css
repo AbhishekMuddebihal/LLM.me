@@ -1,0 +1,36 @@
+/* General scrollbar styles for the entire application */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  transition: opacity 0.3s ease; /* Smooth fade effect */
+  opacity: 0; /* Initially hidden */
+}
+
+body:hover ::-webkit-scrollbar,
+.scrollable:hover ::-webkit-scrollbar {
+  opacity: 1; /* Show scrollbar on hover of scrollable areas */
+}
+
+::-webkit-scrollbar-track {
+  background: #e0e0e0; /* Neutral light gray background for the track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b0b0b0; /* Neutral gray color for the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0; /* Slightly darker gray on hover */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #b0b0b0 #e0e0e0; /* Neutral gray thumb and light gray track */
+}
+
+/* Ensure scrollable areas have overflow */
+.scrollable {
+  overflow-y: auto;
+}
